@@ -17,8 +17,6 @@ env:
         
 install:
   - docker pull $DOCKER_IMAGE
-  - git clone https://github.com/lxml/lxml.git
-  - git --git-dir lxml/.git checkout $TAG
 
 script:
   - make checkout-source
