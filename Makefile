@@ -4,5 +4,5 @@ SOURCE_TAG ?= master
 
 .PHONY: checkout-source
 checkout-source:
-	git clone "$(REPO_URL)" "$(REPO_PATH"
+	git clone "$(REPO_URL)" "$(REPO_PATH)"
 	cd "$(REPO_PATH)" && git checkout "$(SOURCE_TAG)"
