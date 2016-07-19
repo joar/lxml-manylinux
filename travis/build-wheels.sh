@@ -1,12 +1,16 @@
 #!/bin/bash
 set -e -x
 
+REQUIREMENTS=/io/dev-requirements.txt
+
 # Remove Python 2.6 symlinks
 rm /opt/python/cp26*
 
-# Compile wheels
-for PYBIN in $(echo /opt/python/*/bin | grep -v cp26); do
-    ${PYBIN}/pip install -r /io/dev-requirements.txt
+# Compile wheels for all python versions
+for PYBIN in /opt/python/*/bin; do
+    # Install requirements if file exists
+    test ! -e $REQUIREMENTS \
+        || ${PYBIN}/pip install -r $REQUIREMENTS
 
     env STATIC_DEPS=true \
         LDFLAGS="$LDFLAGS -fPIC" \
