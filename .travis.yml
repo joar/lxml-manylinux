@@ -16,8 +16,6 @@ services:
   - docker
 
 env:
-  ARTIFACTS_BUCKET: lxml-manylinux
-
   matrix:
   - SOURCE_TAG=lxml-3.6.0 IMAGE=lxml-manylinux1_x86_64
   - SOURCE_TAG=master IMAGE=lxml-manylinux1_x86_64
