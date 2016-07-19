@@ -1,15 +1,20 @@
 #!/bin/bash
 set -e -x
 
-# Install a system package required by our library
-yum install -y zlib-devel
-
-export STATIC_DEPS=true
+# Remove Python 2.6 symlinks
+rm /opt/python/cp26*
 
 # Compile wheels
-for PYBIN in /opt/python/*/bin; do
+for PYBIN in $(echo /opt/python/*/bin | grep -v cp26); do
     ${PYBIN}/pip install -r /io/dev-requirements.txt
-    ${PYBIN}/pip wheel /io/lxml/ -w wheelhouse/
+
+    env STATIC_DEPS=true \
+        LDFLAGS="$LDFLAGS -fPIC" \
+        CFLAGS="$CFLAGS -fPIC" \
+        ${PYBIN}/pip \
+            wheel \
+            /io/lxml/ \
+            -w wheelhouse/
 done
 
 # Bundle external shared libraries into the wheels
