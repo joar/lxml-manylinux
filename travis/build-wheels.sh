@@ -2,7 +2,7 @@
 set -e -x
 
 # Install a system package required by our library
-# yum install -y -d 1
+yum install -y zlib-devel
 
 export STATIC_DEPS=true
 
