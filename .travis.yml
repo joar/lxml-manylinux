@@ -17,7 +17,7 @@ services:
 
 env:
   matrix:
-  - SOURCE_TAG=lxml-3.2.3 IMAGE=lxml-manylinux1_x86_64
+  - SOURCE_TAG=lxml-3.6.0 IMAGE=lxml-manylinux1_x86_64
   - SOURCE_TAG=master IMAGE=lxml-manylinux1_x86_64
 #  - SOURCE_TAG=lxml-3.2.3 IMAGE=quay.io/pypa/manylinux1_i686 PRE_CMD=linux32
 #  - SOURCE_TAG=master IMAGE=quay.io/pypa/manylinux1_i686 PRE_CMD=linux32
