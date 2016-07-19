@@ -2,7 +2,9 @@
 set -e -x
 
 # Install a system package required by our library
-yum install -y -d 5 libxslt-devel libxml2-devel
+# yum install -y -d 1
+
+export STATIC_DEPS=true
 
 # Compile wheels
 for PYBIN in /opt/python/*/bin; do
