@@ -8,9 +8,7 @@ rm /opt/python/cp26*
 
 # Compile wheels for all python versions
 for PYBIN in /opt/python/*/bin; do
-    # Install requirements if file exists
-    test ! -e $REQUIREMENTS \
-        || ${PYBIN}/pip install -r $REQUIREMENTS
+    ${PYBIN}/pip install -r $REQUIREMENTS
 
     env STATIC_DEPS=true \
         LDFLAGS="$LDFLAGS -fPIC" \
